@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-class="{'nissan':'nissan-site', 'renault':'renault-site','dacia':'dacia-site'}[main.service.company]">
 
   <div class="">
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
@@ -14,7 +14,7 @@
             <div class="">
               <div class="col-md-8 pad0">
                 <img src="assets/images/nml.jpg" width="100%" /><br /><br />
-                <p class="font-size-20 nis-light"><strong>Welcome to the [brand] E-Fleet Electronic Signature service.</strong></p>
+                <p class="font-size-20 nis-light"><strong>Welcome to the <span style="text-transform: capitalize;">{{main.service.company}}</span> E-Fleet Electronic Signature service.</strong></p>
                 <p>Suspendisse non viverra est, in aliquet sapien. Sed facilisis tincidunt diam. Nam iaculis arcu ut facilisis hendrerit. Praesent ultricies auctor nulla, ut placerat sapien ultricies sed. Proin consequat sodales magna. Curabitur vitae libero dolor. Nam sapien justo, rhoncus id nisi a, porta varius diam. Nunc convallis mauris lorem, sit amet lobortis lectus placerat eget. Integer lacinia nunc sed lobortis lacinia.</p>
                 
               </div>
@@ -130,7 +130,7 @@
 
 </div>
 
-<div class="container-fluid" ng-class="{'nissan':'bg191919', 'renault':'bgc28829',2:'three'}[main.service.company]" style="margin-top: 100px;">
+<div class="container-fluid" ng-class="{'nissan':'bg191919', 'renault':'bgc28829','dacia':'bg02326a'}[main.service.company]" style="margin-top: 100px;">
   <div class="footer pad-top-20 pad-bottom-20">
     <div class="container">
       <img src="assets/images/{{main.service.company}}/logo.png" width="120px" alt="E-Fleet"> &nbsp; &nbsp;&nbsp;&nbsp; Copyright

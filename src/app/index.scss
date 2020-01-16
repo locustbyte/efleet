@@ -35,35 +35,7 @@ body{
     }
   }
 }
-.main-wizard{
-  h2{
-  display: none;
-  }
-  .steps-indicator{
-    margin-bottom: 30px;
-    background: #c40031;
-    // margin-top: 20px;
-    li{
-      background: #c40031;
-      color: white;
-      padding-bottom: 13px;
-      a{
-        color: white;
-        &::before{
-          color: #1dd61d;
-        }
-      }
-    }
-    li.current{
 
-    }
-    li.done{
-      a::before{
-        background-color: #21fb21;
-      }
-    }
-  }
-}
 .nav-tabs > li a:hover{
   color: black;
 }
@@ -93,6 +65,10 @@ $navbar-inverse-link-color: #5AADBB;
 .bgc28829{
   background: #c28829;
   color: black;
+}
+.bg02326a{
+  background: #02326a;
+  color: white;
 }
 .bg191919{
   background: #c40030;
@@ -337,3 +313,102 @@ span.round-tab:hover {
  */
 // injector
 // endinjector
+
+.nissan-site{
+  .main-wizard{
+    h2{
+    display: none;
+    }
+    .steps-indicator{
+      margin-bottom: 30px;
+      background: #c40031;
+      // margin-top: 20px;
+      li{
+        background: #c40031;
+        color: white;
+        padding-bottom: 13px;
+        a{
+          color: white;
+          &::before{
+            color: #1dd61d;
+          }
+        }
+      }
+      li.current{
+  
+      }
+      li.done{
+        a::before{
+          background-color: #21fb21;
+        }
+      }
+    }
+  }
+}
+
+.dacia-site{
+  .main-wizard{
+    h2{
+    display: none;
+    }
+    .steps-indicator{
+      margin-bottom: 30px;
+      background: #02326a;
+      // margin-top: 20px;
+      li{
+        background: #02326a;
+        color: white;
+        padding-bottom: 13px;
+        a{
+          color: white;
+          &::before{
+            color: #1dd61d;
+          }
+        }
+      }
+      li.current{
+        a::before{
+          background-color: black;
+        }
+      }
+      li.done{
+        a::before{
+          background-color: #21fb21;
+        }
+      }
+    }
+  }
+}
+.renault-site{
+  .main-wizard{
+    h2{
+    display: none;
+    }
+    .steps-indicator{
+      margin-bottom: 30px;
+      background: #c28829;
+      // margin-top: 20px;
+      li{
+        background: #c28829;
+        color: white;
+        padding-bottom: 13px;
+        a{
+          color: white;
+          &::before{
+            color: #1dd61d;
+          }
+        }
+      }
+      li.current{
+        a::before{
+          background-color: black;
+        }
+      }
+      li.done{
+        a::before{
+          background-color: #21fb21;
+        }
+      }
+    }
+  }
+}
