@@ -130,10 +130,10 @@
 
 </div>
 
-<div class="container-fluid bg191919" style="margin-top: 100px;">
+<div class="container-fluid" ng-class="{'nissan':'bg191919', 'renault':'bgc28829',2:'three'}[main.service.company]" style="margin-top: 100px;">
   <div class="footer pad-top-20 pad-bottom-20">
     <div class="container">
-      <img src="assets/images/footer-logo-nissan.png" width="120px" alt="E-Fleet"> &nbsp; &nbsp;&nbsp;&nbsp; Copyright
+      <img src="assets/images/{{main.service.company}}/logo.png" width="120px" alt="E-Fleet"> &nbsp; &nbsp;&nbsp;&nbsp; Copyright
       &copy; RCI Finaicial Services Limited. All Rights Reserved.
     </div>
   </div>

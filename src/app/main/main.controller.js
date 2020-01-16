@@ -9,12 +9,12 @@
   function MainController($timeout, webDevTec, toastr, $location, $scope) {
     var vm = this;
 
-    var service = {};
-    var host = $location.host();
+    vm.service = {};
+      vm.host = $location.host();
 
-    if (host.indexOf('.') >= 0) {
-      service.company = host.split('.')[0];
-      console.log(service)
+    if (vm.host.indexOf('.') >= 0) {
+      vm.service.company = vm.host.split('.')[0];
+      console.log(vm.service)
     }
     vm.awesomeThings = [];
     vm.classAnimation = '';
