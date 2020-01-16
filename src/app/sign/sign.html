@@ -1,0 +1,160 @@
+<div class="container">
+
+  <div class="">
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+
+
+  <!-- <div class="text-center efleet-red">
+    <h1>E-Fleet Sign</h1>
+    
+    <p class="animated infinite" ng-class="main.classAnimation">
+      <button type="button" class="btn btn-lg btn-success" ng-click="main.showToastr()">Splendid Toastr</button>
+    </p>
+    <p>
+      With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
+    </p>
+  </div> -->
+
+  <uib-tabset class="main-tabs" active="activeForm">
+    <uib-tab index="0" heading="Dashboard">
+      <div class="p-20">
+        <div class="wizard">
+          <div class="wizard-inner">
+            <div class="connecting-line"></div>
+            <ul class="nav nav-tabs" role="tablist">
+  
+              <li role="presentation" class="active">
+                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                  <span class="round-tab">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                  </span>
+                </a>
+                <p class="wizard-under-text">Sign Contract</p>
+              </li>
+  
+              <li role="presentation" class="disabled">
+                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                  <span class="round-tab">
+                    <i class="glyphicon glyphicon-road"></i>
+                  </span>
+                </a>
+                <p class="wizard-under-text">Confirm Vehicle</p">
+              </li>
+              <li role="presentation" class="disabled">
+                <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                  <span class="round-tab">
+                    <i class="glyphicon glyphicon-inbox"></i>
+                  </span>
+                </a>
+                <p class="wizard-under-text">Additional Documents</p>
+              </li>
+  
+              <li role="presentation" class="disabled">
+                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                  <span class="round-tab">
+                    <i class="glyphicon glyphicon-ok"></i>
+                  </span>
+                </a>
+                <p class="wizard-under-text">Welcome Pack</p>
+              </li>
+            </ul>
+          </div>
+  
+          <form role="form" class="form-eee">
+            <div class="tab-content">
+              <div class="tab-pane active" role="tabpanel" id="step1">
+                
+                  <div class="">
+                    <div class="col-lg-4">
+                      <div class="p-20 ">
+                        <div class="col-lg-12">
+                          <p class="p-0">Mark Jenkins</p>
+                          <p class="p-0">Nissan Juke</p class="p-0">
+                          <p class="p-0">36 Months</p class="p-0">
+                        </div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="p-20">
+                        <div class="col-lg-12">
+                          <i class="fas fa-file-pdf"></i>
+                          <i class="fa fa-accessible-icon"></i>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                      <div class="p-20">
+                        <h3>Sign your contract</h3>
+                      <p>Please take the time to review this contract by clicking the document icon.</p>
+                      <ul class="list-inline">
+                        <li><button type="button" class="btn btn-success next-step">Save and continue</button></li>
+                      </ul>
+                      </div>
+                      
+                    </div>
+                  </div>
+                
+              </div>
+              <div class="tab-pane" role="tabpanel" id="step2">
+                <h3>Step 2</h3>
+                <p>This is step 2</p>
+                <ul class="list-inline pull-right">
+                  <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                  <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                </ul>
+              </div>
+              <div class="tab-pane" role="tabpanel" id="step3">
+                <h3>Step 3</h3>
+                <p>This is step 3</p>
+                <ul class="list-inline pull-right">
+                  <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                  <li><button type="button" class="btn btn-default next-step">Skip</button></li>
+                  <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab-pane" role="tabpanel" id="complete">
+                <h3>Complete</h3>
+                <p>You have successfully completed all steps.</p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </uib-tab>
+    <uib-tab index="1" heading="About">
+      <div class="p-20">
+        About Content
+      </div>
+    </uib-tab>
+    <uib-tab index="2" heading="Contact">
+      <div class="p-20">
+        Contact Content
+      </div>
+    </uib-tab>
+  </uib-tabset>
+
+  
+
+  
+
+
+
+  
+
+</div>
+
+<div class="container-fluid bg191919 m-t-300">
+  <div class="footer pad-top-20 pad-bottom-20">
+    <div class="container">
+      <img src="assets/images/footer-logo-nissan.png" width="120px" alt="E-Fleet"> &nbsp; &nbsp;&nbsp;&nbsp; Copyright
+      &copy; RCI Finaicial Services Limited. All Rights Reserved.
+    </div>
+  </div>
+</div>

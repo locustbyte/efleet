@@ -1,0 +1,308 @@
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+ */
+ #wizard-step-container {
+  margin: 20px 0;
+}
+
+#wizard-content-container {
+  margin: 20px 0;
+}
+
+#wizard-navigation-container {
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+  padding-top: 20px;
+}
+.main-wizard{
+  h2{
+  display: none;
+  }
+  .steps-indicator{
+    margin-bottom: 30px;
+    background: #c40031;
+    // margin-top: 20px;
+    li{
+      background: #c40031;
+      color: white;
+      padding-bottom: 13px;
+      a{
+        color: white;
+        &::before{
+          color: #1dd61d;
+        }
+      }
+    }
+    li.current{
+
+    }
+    li.done{
+      a::before{
+        background-color: #21fb21;
+      }
+    }
+  }
+}
+.nav-tabs > li a:hover{
+  color: black;
+}
+.p-0{
+  margin: 0 0 0;
+}
+form.form-eee{
+  background: #eeeeee;
+}
+.tab-content{
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+$navbar-inverse-link-color: #5AADBB;
+.contract-part{
+  background-color: #efefef;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 10px;
+}
+.m-t-300{
+  margin-top: 300px;
+}
+.bg191919{
+  background: #191919;
+}
+.navbar-nav{
+  float: right;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+}
+.wizard-under-text{
+  font-size: 12px;
+  font-weight: bold;
+}
+.p-20{
+  padding: 20px;
+}
+.wizard .tab-pane{
+  padding-top: 0px !important;
+}
+.tab-pane.w-borders{
+  background: white;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  
+}
+.w-borders{
+  background: white;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  
+}
+.wizard .nav-tabs{
+  margin: 0!important;
+}
+.wizard {
+  margin: 0px auto;
+  background: #fff;
+  .tab-content{
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+    // margin-top: 50px;
+  }
+}
+
+  .wizard .nav-tabs {
+      position: relative;
+      margin: 40px auto;
+      margin-bottom: 0;
+      border-bottom-color: #e0e0e0;
+      li{
+        text-align: center;
+      }
+  }
+
+  .wizard > div.wizard-inner {
+      position: relative;
+  }
+
+.connecting-line {
+  height: 2px;
+  background: #e0e0e0;
+  position: absolute;
+  width: 80%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 1;
+}
+
+.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+  color: #555555;
+  cursor: default;
+  border: 0;
+  border-bottom-color: transparent;
+}
+
+span.round-tab {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  display: inline-block;
+  border-radius: 100px;
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  font-size: 25px;
+}
+span.round-tab i{
+  color:#555555;
+}
+.wizard li.active span.round-tab {
+  background: #fff;
+  border: 2px solid #5bc0de;
+  
+}
+.wizard li.active span.round-tab i{
+  color: #5bc0de;
+}
+
+span.round-tab:hover {
+  color: #333;
+  border: 2px solid #333;
+}
+
+.wizard .nav-tabs > li {
+  width: 25%;
+}
+
+.wizard li:after {
+  content: " ";
+  position: absolute;
+  left: 46%;
+  opacity: 0;
+  margin: 0 auto;
+  bottom: 0px;
+  border: 5px solid transparent;
+  border-bottom-color: #5bc0de;
+  transition: 0.1s ease-in-out;
+}
+
+.wizard li.active:after {
+  content: " ";
+  position: absolute;
+  left: 46%;
+  opacity: 1;
+  margin: 0 auto;
+  bottom: 0px;
+  border: 10px solid transparent;
+  border-bottom-color: #5bc0de;
+}
+
+.wizard .nav-tabs > li a {
+  width: 70px;
+  height: 70px;
+  margin: 20px auto;
+  border-radius: 100%;
+  padding: 0;
+}
+
+  .wizard .nav-tabs > li a:hover {
+      background: transparent;
+  }
+
+.wizard .tab-pane {
+  position: relative;
+  padding-top: 50px;
+}
+
+.wizard h3 {
+  margin-top: 0;
+}
+
+@media( max-width : 585px ) {
+
+  .wizard {
+      width: 90%;
+      height: auto !important;
+  }
+
+  span.round-tab {
+      font-size: 16px;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+  }
+
+  .wizard .nav-tabs > li a {
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+  }
+
+  .wizard li.active:after {
+      content: " ";
+      position: absolute;
+      left: 35%;
+  }
+}
+
+// @import "../assets/scss/paper-bootstrap-wizard";
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+.nav-brand{
+  a:hover{
+    color: #333;
+  }
+}
+.font-size-20{
+  font-size: 20px;
+}
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.pad-top-20{
+  padding-top: 20px;
+}
+.pad-bottom-20{
+  padding-bottom: 20px;
+}
+
+.form-part{
+  padding: 20px;
+  background: #f0f0f0;
+}
+.efleet-red, .nav-bar-red{
+  background: #c3002f !important;
+}
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
