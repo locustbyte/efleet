@@ -21,9 +21,19 @@ body{
   margin: 20px 0;
   padding-top: 20px;
 }
-.main-tabs li a{
-  font-family: "Nissan Light","Nissan Regular",Verdana,Arial,sans-serif;
-  font-weight: bold;
+.main-tabs { 
+  li {
+    a{
+      font-family: "Nissan Light","Nissan Regular",Verdana,Arial,sans-serif;
+      
+    }
+    &.active{
+      a{
+        font-family: "Nissan Light","Nissan Regular",Verdana,Arial,sans-serif;
+        font-weight: bold;
+      }
+    }
+  }
 }
 .main-wizard{
   h2{
@@ -82,6 +92,9 @@ $navbar-inverse-link-color: #5AADBB;
 }
 .bg191919{
   background: #191919;
+}
+.navbar .navbar-collapse{
+  border-bottom: 1px solid #c40030;
 }
 .navbar-nav{
   float: right;
