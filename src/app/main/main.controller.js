@@ -16,6 +16,7 @@
       vm.service.company = vm.host.split('.')[0];
       console.log(vm.service)
     }
+    
     vm.awesomeThings = [];
     vm.classAnimation = '';
     vm.creationDate = 1578480265634;

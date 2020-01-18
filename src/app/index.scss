@@ -9,8 +9,14 @@
  #wizard-step-container {
   margin: 20px 0;
 }
+.ft17{
+  font-size: 1.7em;
+}
+.ft13{
+  font-size: 1.3em;
+}
 body{
-  font-family: "Nissan Light","Nissan Regular",Verdana,Arial,sans-serif;
+  font-family: "Nissan Light","Nissan Regular",Verdana,Arial,sans-serif !important;
 }
 #wizard-content-container {
   margin: 20px 0;
@@ -48,11 +54,7 @@ body{
 form.form-eee{
   background: #eeeeee;
 }
-.tab-content{
-  border-left: 1px solid #dddddd;
-  border-right: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
-}
+
 $navbar-inverse-link-color: #5AADBB;
 .contract-part{
   background-color: #efefef;
@@ -70,10 +72,7 @@ $navbar-inverse-link-color: #5AADBB;
   background: #02326a;
   color: white;
 }
-.bg191919{
-  background: #c40030;
-  color: white;
-}
+
 .navbar .navbar-collapse{
   border-bottom: 1px solid #c40030;
 }
@@ -306,7 +305,23 @@ span.round-tab:hover {
     width: 50px;
   }
 }
-
+.btn{
+  font-family: "Nissan Light","Nissan Regular",Verdana,Arial,sans-serif;
+  font-weight: bold;
+  padding: 10px 30px 10px 30px;
+  border-radius: 0px;
+  &:hover{
+    background-color: black;
+    color: white;
+  }
+}
+.btn-danger{
+  background-color: #c71444;
+  border: 0px;
+}
+.steps-indicator:before{
+  display: none;
+}
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically
@@ -315,31 +330,55 @@ span.round-tab:hover {
 // endinjector
 
 .nissan-site{
+  .tab-content{
+    border: 1px solid #c71444;
+    margin-top: -1px;
+  }
+  .nav > li > a:hover{
+    border-bottom: 1px solid #c71344;
+  }
+  .nav-tabs > li.active > a{
+    border-bottom: 1px solid white !important;
+  }
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    border: 1px solid #c40031;
+    border-radius: 0px;
+    margin-left: 1px;
+  }
+  .footer{
+      background: #c71444;
+      color: white;
+    
+  }
   .main-wizard{
     h2{
     display: none;
     }
     .steps-indicator{
       margin-bottom: 30px;
-      background: #c40031;
+      background: #c71444;
       // margin-top: 20px;
       li{
-        background: #c40031;
+        background: #c71444;
         color: white;
-        padding-bottom: 13px;
+        padding-bottom: 40px;
+        padding-top: 35px;
         a{
           color: white;
           &::before{
+            margin-top: 20px;
             color: #1dd61d;
           }
         }
       }
       li.current{
-  
+        a::before{
+          background-color: #000000;
+        }
       }
       li.done{
         a::before{
-          background-color: #21fb21;
+          background-color: #649c64;
         }
       }
     }
@@ -347,6 +386,14 @@ span.round-tab:hover {
 }
 
 .dacia-site{
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    border: 1px solid #02326a;
+    border-radius: 0px;
+  }
+  .footer{
+    background: #02326a;
+    color: white;
+  }
   .main-wizard{
     h2{
     display: none;
@@ -380,6 +427,14 @@ span.round-tab:hover {
   }
 }
 .renault-site{
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    border: 1px solid #c28829;
+    border-radius: 0px;
+  }
+  .footer{
+    background: #c28829;
+    color: white;
+  }
   .main-wizard{
     h2{
     display: none;
