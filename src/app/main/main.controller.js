@@ -171,13 +171,60 @@
       return '';
     }
 
+    vm.doNextShift = function(){
+      $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
+        //return confirm("Do you want to leave the step "+stepNumber+"?");
+        console.log(stepNumber)
+        $(".sw-btn-prev").removeClass("hide")
+        switch (stepNumber) {
+          case 0:
+            if ( $("#propnumber").val().length === 10 ) {
+              console.log('yes');
+              //return true;
+              $(".sw-btn-next").text("SEND CODE");
+              //$('#smartwizard').smartWizard("next");
+            } else {
+              console.log('no')
+              return false
+              //$('#smartwizard').smartWizard("previous");
+            }
+            
+            break;
+          case 1:
+           //return true;
+           $(".sw-btn-next").text("VALIDATE CODE");
+            break;
+          case 2:
+            $(".sw-btn-next").text("MEMBER CENTER")
+            break;
+          case 3:
+            $(".sw-btn-next").text("LOCATE PROPOSAL")
+            break;
+          case 4:
+            $(".sw-btn-next").text("LOCATE PROPOSAL")
+            break;
+          default:
+            $(".sw-btn-next").text("LOCATE PROPOSAL")
+        }
+      });
+    }
+
+    vm.doPrevShift = function(){
+      
+    }
+
     angular.element(document).ready(function () {
       $('#smartwizard').smartWizard();
+      
     });
 
     $scope.$watch('$viewContentLoaded',
       function () {
         $timeout(function () {
+
+          $('#inclPhoto').change(function() {
+            alert($(this).prop('checked'))
+          })
           
           $('#smartwizard').smartWizard({
             keyNavigation: true,
@@ -189,36 +236,71 @@
             toolbarSettings: {
               toolbarPosition: 'bottom', // none, top, bottom, both
               toolbarButtonPosition: 'right', // left, right
-              showNextButton: true, // show/hide a Next button
-              showPreviousButton: true, // show/hide a Previous button
+              showNextButton: false, // show/hide a Next button
+              showPreviousButton: false, // show/hide a Previous button
+              toolbarExtraButtons: [
+                $('<button></button>').text('PREVIOUS')
+                          .addClass('btn btn-secondary sw-btn-prev disabled')
+                          .on('click', function(){ 
+                            $('#smartwizard').smartWizard("previous");
+                          }),
+                $('<button></button>').text('NEXT')
+                          .addClass('btn btn-secondary sw-btn-next')
+                          .on('click', function(){ 
+                            vm.doNextShift();                  
+                          })
+              ]
             },
           });
+          $(".sw-btn-next").text("LOCATE PROPOSAL")
+          $(".sw-btn-prev").addClass("hide")
+
+
+          // Initialize the leaveStep event
+          // $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
+          //   //return confirm("Do you want to leave the step "+stepNumber+"?");
+            
+          //   switch (stepNumber) {
+          //     case 0:
+          //       if ( $("#propnumber").val().length === 10 ) {
+          //         console.log('yes');
+          //         //return true;
+          //         $(".sw-btn-next").text("SEND CODE");
+          //         //$('#smartwizard').smartWizard("next");
+          //       } else {
+          //         console.log('no')
+          //         return false
+          //         //$('#smartwizard').smartWizard("previous");
+          //       }
+                
+          //       break;
+          //     case 1:
+          //      //return true;
+                
+          //       break;
+          //     case 2:
+          //       $(".sw-btn-next").text("VALIDATE CODE")
+          //       break;
+          //     case 3:
+          //       $(".sw-btn-next").text("LOCATE PROPOSAL")
+          //       break;
+          //     case 4:
+          //       $(".sw-btn-next").text("LOCATE PROPOSAL")
+          //       break;
+          //     default:
+          //       $(".sw-btn-next").text("LOCATE PROPOSAL")
+          //   }
+          // });
           $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
-            console("You are on step "+stepNumber+" now");
+            console.log("You are on step "+stepNumber+" now");
 
-            switch (stepNumber) {
-              case 0:
-                $(".sw-btn-next").text("LOCATE PROPOSAL")
-                break;
-              case 1:
-                $(".sw-btn-next").text("SEND CODE")
-                break;
-              case 2:
-                $(".sw-btn-next").text("VALIDATE CODE")
-                break;
-              case 3:
-                $(".sw-btn-next").text("LOCATE PROPOSAL")
-                break;
-              case 4:
-                $(".sw-btn-next").text("LOCATE PROPOSAL")
-                break;
-              default:
-                $(".sw-btn-next").text("LOCATE PROPOSAL")
+            if ( stepNumber === 0 ) {
+              $(".sw-btn-prev").addClass("hide")
+            } else {
+              $(".sw-btn-prev").removeClass("hide")
             }
-
-            if(stepNumber === 1){
-              $(".sw-btn-next").text("SEND CODE")
-            }
+            
+            
          });
         }, 0);
       });

@@ -15,18 +15,19 @@
       border: 1px solid #c40032;">
         <div id="smartwizard" class="">
           <ul>
-            <li><a href="#step-1">Locate Proposal<br /><small>Find your proposal</small></a></li>
-            <li><a href="#step-2">Authenticate<br /><small>Request authentication code</small></a></li>
-            <li><a href="#step-3">Enter Validation Code<br /><small>Validate</small></a></li>
-            <li><a href="#step-4">Photo ID<br /><small>Selfie / Upload Photo</small></a></li>
-            <li><a href="#step-5">Sign Contract<br /><small>Sign your agreement</small></a></li>
+            <li><a href="#step-1">1. Locate Proposal<br /><small>Find your proposal</small></a></li>
+            <li><a href="#step-2">2. Authenticate<br /><small>Request authentication code</small></a></li>
+            <li><a href="#step-3">3. Enter Validation Code<br /><small>Validate</small></a></li>
+            <li><a href="#step-4">4. Photo ID<br /><small>Selfie / Upload Photo</small></a></li>
+            <li><a href="#step-5">5. Sign Contract<br /><small>Sign your agreement</small></a></li>
           </ul>
 
           <div>
             <div id="step-1" class="">
-              <div class="row m-0">
+              <div class="row m-0 equal">
                 <div class="col-md-8 pad0">
                   <img src="assets/images/nml.jpg" width="100%" /><br /><br />
+
                   <div class="p-20">
                     <p class="ft17 nis-light"><strong>Welcome to the <span
                           style="text-transform: capitalize;">{{main.service.company}}</span> finance electronic signing
@@ -43,16 +44,22 @@
                   <p class="ft13"><strong>Locate your proposal</strong></p>
                   <p>Signing your agreement electronially couldn't be easier. First we need to find your agreement, you
                     can help us by completing the following fields.</p><br />
-                  <form>
+                  <form name="formStep1" id="formStep1" novalidate>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Proposal number*</label>
-                      <input type="text" ng-model="propnumber" ui-mask="9999999999" class="form-control" id="propnumber"
-                        ui-mask-placeholder required />
+                      <label for="propnumber">Proposal number*</label>
+                      <input type="text" ng-model="propnumber" ui-mask="9999999999" class="form-control"
+                        name="propnumber" id="propnumber" ui-mask-placeholder required ng-minlength="10"
+                        ng-maxlength="10" />
+                      <p ng-show="formStep1.propnumber.$error.minlength" class="help-block">Username is too short.</p>
+                      <p ng-show="formStep1.propnumber.$error.maxlength" class="help-block">Username is too long.</p>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Email Address*</label>
-                      <input type="email" class="form-control" id="dateOfBirth" required>
+                      <label>Email Address*</label>
+                      <input type="email" class="form-control" id="emailAddress" name="emailAddress" required>
+                      <p ng-show="formStep1.emailAddress.$invalid && !formStep1.emailAddress.$pristine"
+                        class="help-block">Enter a valid email.</p>
                     </div>
+
                     <div class="form-group">
                       <label for="exampleInputEmail1">Date of birth*</label>
                       <p class="input-group">
@@ -65,6 +72,10 @@
                         </span>
                       </p>
                     </div>
+                    <!-- <label class="switch">
+                      <input id="inclPhoto" type="checkbox">
+                      <span class="slider round"></span>
+                    </label> -->
                     <br />
                     <!-- <input type="submit" class="btn btn-danger" wz-next value="Verify Details" /> -->
 
@@ -73,75 +84,78 @@
               </div>
             </div>
             <div id="step-2" class="">
-              <div class="row m-0">
+              <div class="row m-0 equal">
                 <div class="col-md-8 p-20">
                   <div ng-if="main.codeStat != 'received'">
                     <p class="ft13"><strong>We need to validate who you are</strong></p">
-                      <p>We need to send you a code to validate who you are. <br />You can choose whether to receive this
+                      <p>We need to send you a code to validate who you are. <br />You can choose whether to receive
+                        this
                         code via <strong>Email</strong> or <strong>SMS</strong>.</p>
                       <hr />
                       <p><strong>NOTE:</strong> We can only send the code to either your registered email address or
                         registered mobile number. That which is recorded against the proposal number.</p>
                   </div>
 
-                  
-                  
+
+
                 </div>
                 <div class="col-md-4 form-part">
                   <div ng-if="main.codeStat != 'received'">
                     <p class="ft13"><strong>Choose how to receive code</strong></p>
-                  <form>
-                    <div class="form-group">
-                      <select ng-model="codeTypeSelect" ng-change="main.codeTypeSelected(codeTypeSelect)" ng-options="opt as opt.label for opt in units " class="form-control"></select>
-                    </div>
-                    <p ng-if="main.codeType == 'Email'">We will send an email to [EMAIL]</p>
-                    <p ng-if="main.codeType == 'SMS'">We will send an SMS to [MOBILE]</p>
+                    <form>
+                      <div class="form-group">
+                        <select ng-model="codeTypeSelect" ng-change="main.codeTypeSelected(codeTypeSelect)"
+                          ng-options="opt as opt.label for opt in units " class="form-control"></select>
+                      </div>
+                      <p ng-if="main.codeType == 'Email'">We will send an email to [EMAIL]</p>
+                      <p ng-if="main.codeType == 'SMS'">We will send an SMS to [MOBILE]</p>
 
-                    <!-- <br />
+                      <!-- <br />
                     <input type="button" class="btn btn-danger" value="Send Code" ng-click="main.codeTypeSelectedPush(codeTypeSelect)" /> -->
-                    <br /><br />
-                  </form>
+                      <br /><br />
+                    </form>
                   </div>
-                  
-                  
-                  
+
+
+
 
                 </div>
               </div>
             </div>
             <div id="step-3" class="">
-              <div class="row m-0">
+              <div class="row m-0 equal">
                 <div class="col-md-8 p-20">
-                  
 
-                    <p class="ft13"><strong>We just sent you a code!</strong></p">
-                      <p>Please check your 
-                        <span ng-if="main.codeType == 'Email'">email</span> 
-                        <span ng-if="main.codeType == 'SMS'">mobile for as SMS</span> 
-                        as we have just sent you an authentication code which you must now enter here to continue.</p>
-                      <hr />
-                  
-                  
+
+                  <p class="ft13"><strong>We just sent you a code!</strong></p">
+                    <p>Please check your
+                      <span ng-if="main.codeType == 'Email'">email</span>
+                      <span ng-if="main.codeType == 'SMS'">mobile for as SMS</span>
+                      as we have just sent you an authentication code which you must now enter here to continue.</p>
+                    <hr />
+
+
                 </div>
                 <div class="col-md-4 form-part">
-                    <p class="ft13"><strong>Security Code</strong></p>
-                    <form>
-                      <div class="form-group">
-                        <label for="authCode">
-                          Enter security code sent via 
-                          <span ng-if="main.codeType == 'Email'">Email</span> 
-                          <span ng-if="main.codeType == 'SMS'">SMS</span> 
-                        </label>
-                        <input type="text" ng-model="authCode" ui-mask="9999" ui-mask-placeholder required class="form-control" id="AuthCode">
-                      </div>
-                      
-                      <!-- <br />
+                  <p class="ft13"><strong>Security Code</strong></p>
+                  <form>
+                    <div class="form-group">
+                      <label for="authCode">
+                        Enter security code sent via
+                        <span ng-if="main.codeType == 'Email'">Email</span>
+                        <span ng-if="main.codeType == 'SMS'">SMS</span>
+                      </label>
+                      <input type="text" ng-model="authCode" ui-mask="9999" ui-mask-placeholder required
+                        class="form-control" id="AuthCode">
+                    </div>
+
+                    <!-- <br />
                       <!-- <input type="submit" class="btn btn-default" wz-previous value="Re-Enter Details" /> -->
-                      <!-- <input type="submit" class="btn btn-danger" value="Validate Code" ng-click="main.doValidateCode();"/> -->
-                      <br /><br />
-                    </form>
-                  
-                  
+                    <!-- <input type="submit" class="btn btn-danger" value="Validate Code" ng-click="main.doValidateCode();"/> -->
+                    <br /><br />
+                  </form>
+
+
 
                 </div>
               </div>
@@ -150,12 +164,23 @@
               Step Content
             </div>
             <div id="step-5" class="">
-              Step Content
+              
+                <div class="row m-0 equal">
+                  <div class="col-md-8 p-20">
+
+
+                    <p class="ft13"><strong>Sign your agreement</strong></p>
+                  </div>
+                  <div class="col-md-4 p-20">
+                    Some functions here
+                  </div>
+                </div>
+              
             </div>
           </div>
         </div>
       </div>
-      
+
     </uib-tab>
     <uib-tab index="1" heading="About">
       <div class="p-20">
