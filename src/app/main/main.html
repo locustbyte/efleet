@@ -26,7 +26,7 @@
             <div id="step-1" class="">
               <div class="row m-0 equal">
                 <div class="col-md-8 pad0">
-                  <img src="assets/images/nml.jpg" width="100%" /><br /><br />
+                  <img src="assets/images/nml.jpg" width="100%" /><br />
 
                   <div class="p-20">
                     <p class="ft17 nis-light"><strong>Welcome to the <span
@@ -42,23 +42,19 @@
                 </div>
                 <div class="col-md-4 form-part">
                   <p class="ft13"><strong>Locate your proposal</strong></p>
-                  <p>Signing your agreement electronially couldn't be easier. First we need to find your agreement, you
+                  <p>Signing your agreement electronially couldn't be easier. First we need to find your proposal, you
                     can help us by completing the following fields.</p><br />
                   <form name="formStep1" id="formStep1" novalidate>
                     <div class="form-group">
-                      <label for="propnumber">Proposal number*</label>
-                      <input type="text" ng-model="propnumber" ui-mask="9999999999" class="form-control"
-                        name="propnumber" id="propnumber" ui-mask-placeholder required ng-minlength="10"
+                      <label for="propnumber">Proposal number*</label><br />
+                      <small>(typically 10 digits)</small>
+                      <input type="text" ng-model="login.propnumber" class="form-control"
+                        name="propnumber" id="propnumber" required ng-minlength="10"
                         ng-maxlength="10" />
-                      <p ng-show="formStep1.propnumber.$error.minlength" class="help-block">Username is too short.</p>
-                      <p ng-show="formStep1.propnumber.$error.maxlength" class="help-block">Username is too long.</p>
+                      <p ng-show="formStep1.propnumber.$error.minlength" class="help-block">Proposal number is too short.</p>
+                      <p ng-show="formStep1.propnumber.$error.maxlength" class="help-block">Proposal number is too long.</p>
                     </div>
-                    <div class="form-group">
-                      <label>Email Address*</label>
-                      <input type="email" class="form-control" id="emailAddress" name="emailAddress" required>
-                      <p ng-show="formStep1.emailAddress.$invalid && !formStep1.emailAddress.$pristine"
-                        class="help-block">Enter a valid email.</p>
-                    </div>
+                    
 
                     <div class="form-group">
                       <label for="exampleInputEmail1">Date of birth*</label>
@@ -71,6 +67,13 @@
                               class="glyphicon glyphicon-calendar"></i></button>
                         </span>
                       </p>
+                    </div>
+                    <div class="form-group">
+                      <label>Email Address*</label>
+                      <input type="email" class="form-control" id="emailAddress" name="emailAddress" ng-model="login.email" required>
+                      <p ng-show="formStep1.emailAddress.$invalid && !formStep1.emailAddress.$pristine" class="help-block">Please enter a valid email address.</p>
+                        
+                        
                     </div>
                     <!-- <label class="switch">
                       <input id="inclPhoto" type="checkbox">
@@ -89,11 +92,13 @@
                   <div ng-if="main.codeStat != 'received'">
                     <p class="ft13"><strong>We need to validate who you are</strong></p">
                       <p>We need to send you a code to validate who you are. <br />You can choose whether to receive
-                        this
-                        code via <strong>Email</strong> or <strong>SMS</strong>.</p>
+                        this code via <strong>Email</strong> or <strong>SMS</strong>.</p>
                       <hr />
-                      <p><strong>NOTE:</strong> We can only send the code to either your registered email address or
-                        registered mobile number. That which is recorded against the proposal number.</p>
+                      <p>
+                        <div class="alert alert-info" role="alert"><strong>NOTE: </strong>We can only send the code to either your registered email address or
+                          registered mobile number. That which is recorded against the proposal number.</div>
+                      </p>
+                      
                   </div>
 
 

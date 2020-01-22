@@ -38,9 +38,13 @@
 
 
     $scope.units = [
+      {'id': 0, 'label': 'Please Choose'},
       {'id': 1, 'label': 'Email'},
       {'id': 2, 'label': 'SMS'},
     ]
+
+    $scope.codeTypeSelect = $scope.units[0];
+
     vm.codeTypeSelected = function(selectedCodeChoice){
       console.log(selectedCodeChoice.label)
       if ( selectedCodeChoice.label === 'Email') {
@@ -61,30 +65,7 @@
     }
 
     $scope.data= $scope.units[0]; // Set by default the value "test1
-    $scope.steps = [
-      'Step 1',
-      'Step 2',
-      'Disabled Step'
-    ];
 
-    $scope.current = 2;
-
-    $scope.stepClick = function (index) {
-      $scope.current = index;
-    }
-
-    $scope.stepDisabled = function (index) {
-      return index > 1; // disable steps 2 and the ones after it
-    }
-
-    $scope.today = function () {
-      $scope.dt = new Date();
-    };
-    $scope.today();
-
-    $scope.clear = function () {
-      $scope.dt = null;
-    };
 
     $scope.inlineOptions = {
       customClass: getDayClass,
@@ -175,11 +156,14 @@
       $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
         //return confirm("Do you want to leave the step "+stepNumber+"?");
         console.log(stepNumber)
-        $(".sw-btn-prev").removeClass("hide")
+        
         switch (stepNumber) {
           case 0:
+
+
             if ( $("#propnumber").val().length === 10 ) {
               console.log('yes');
+              $(".sw-btn-prev").removeClass("hide")
               //return true;
               $(".sw-btn-next").text("SEND CODE");
               //$('#smartwizard').smartWizard("next");
@@ -210,7 +194,44 @@
     }
 
     vm.doPrevShift = function(){
-      
+      $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
+        //return confirm("Do you want to leave the step "+stepNumber+"?");
+        console.log(stepNumber)
+        
+        switch (stepNumber) {
+          case 0:
+
+
+            if ( $("#propnumber").val().length === 10 ) {
+              console.log('yes');
+              $(".sw-btn-prev").removeClass("hide")
+              //return true;
+              $(".sw-btn-next").text("SEND CODE");
+              //$('#smartwizard').smartWizard("next");
+            } else {
+              console.log('no')
+              return false
+              //$('#smartwizard').smartWizard("previous");
+            }
+            
+            break;
+          case 1:
+           //return true;
+           $(".sw-btn-next").text("VALIDATE CODE");
+            break;
+          case 2:
+            $(".sw-btn-next").text("MEMBER CENTER")
+            break;
+          case 3:
+            $(".sw-btn-next").text("LOCATE PROPOSAL")
+            break;
+          case 4:
+            $(".sw-btn-next").text("LOCATE PROPOSAL")
+            break;
+          default:
+            $(".sw-btn-next").text("LOCATE PROPOSAL")
+        }
+      });
     }
 
     angular.element(document).ready(function () {
@@ -293,6 +314,40 @@
           // });
           $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
             console.log("You are on step "+stepNumber+" now");
+
+            switch (stepNumber) {
+              case 0:
+    
+    
+                if ( $("#propnumber").val().length === 10 ) {
+                  console.log('yes');
+                  $(".sw-btn-prev").removeClass("hide")
+                  //return true;
+                  $(".sw-btn-next").text("LOCATE PROPOSAL");
+                  //$('#smartwizard').smartWizard("next");
+                } else {
+                  console.log('no')
+                  return false
+                  //$('#smartwizard').smartWizard("previous");
+                }
+                
+                break;
+              case 1:
+               //return true;
+               $(".sw-btn-next").text("SEND CODE");
+                break;
+              case 2:
+                $(".sw-btn-next").text("VALIDATE CODE")
+                break;
+              case 3:
+                $(".sw-btn-next").text("LOCATE PROPOSAL")
+                break;
+              case 4:
+                $(".sw-btn-next").text("MEMBER CENTER")
+                break;
+              default:
+                $(".sw-btn-next").text("LOCATE PROPOSAL")
+            }
 
             if ( stepNumber === 0 ) {
               $(".sw-btn-prev").addClass("hide")
