@@ -370,6 +370,7 @@ span.round-tab:hover {
           a{
             color: white !important;
             font-size: 2.5rem;
+            padding: 0;
           }
         }
         &.done{
@@ -600,4 +601,9 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.btn-toolbar{
+  display: flex;
+    justify-content: flex-end;
 }

@@ -46,6 +46,7 @@
     $scope.codeTypeSelect = $scope.units[0];
 
     vm.codeTypeSelected = function(selectedCodeChoice){
+      $scope.codeTypeSelect = selectedCodeChoice;
       console.log(selectedCodeChoice.label)
       if ( selectedCodeChoice.label === 'Email') {
         vm.codeType = 'Email';
@@ -64,7 +65,6 @@
       console.log('validated')
     }
 
-    $scope.data= $scope.units[0]; // Set by default the value "test1
 
 
     $scope.inlineOptions = {
@@ -175,6 +175,12 @@
             
             break;
           case 1:
+            console.log($scope.codeTypeSelect)
+            if ( $scope.codeTypeSelect.label == "Please Choose") {
+              return false;
+            } else {
+              return true;
+            }
            //return true;
            $(".sw-btn-next").text("VALIDATE CODE");
             break;
@@ -216,6 +222,7 @@
             
             break;
           case 1:
+            console.log("vm.codeTypeSelect")
            //return true;
            $(".sw-btn-next").text("VALIDATE CODE");
             break;
