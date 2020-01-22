@@ -112,8 +112,10 @@
                         <select ng-model="codeTypeSelect" ng-change="main.codeTypeSelected(codeTypeSelect)"
                           ng-options="opt as opt.label for opt in units " class="form-control"></select>
                       </div>
-                      <p ng-if="main.codeType == 'Email'">We will send an email to [EMAIL]</p>
+                      <p ng-if="main.codeType == 'Email'">We will send an email to <strong>{{login.email}}</strong></p>
                       <p ng-if="main.codeType == 'SMS'">We will send an SMS to [MOBILE]</p>
+                      <p>Click 'SEND CODE' to continue.</p>
+                      <!-- <button class="btn btn-secondary sw-btn-next">SEND CODE</button> -->
 
                       <!-- <br />
                     <input type="button" class="btn btn-danger" value="Send Code" ng-click="main.codeTypeSelectedPush(codeTypeSelect)" /> -->
@@ -133,10 +135,10 @@
 
 
                   <p class="ft13"><strong>We just sent you a code!</strong></p">
-                    <p>Please check your
-                      <span ng-if="main.codeType == 'Email'">email</span>
-                      <span ng-if="main.codeType == 'SMS'">mobile for as SMS</span>
-                      as we have just sent you an authentication code which you must now enter here to continue.</p>
+                    <p>We have just sent an authorisation code to your registered 
+                      <span ng-if="main.codeType == 'Email'">email address: <br /><strong>{{login.email}}</strong><br />You must now enter that code here to continue.</span>
+                      <span ng-if="main.codeType == 'SMS'">mobile number: <br /><strong>{{login.email}}</strong><br />You must now enter that code here to continue.</span>
+                      </p>
                     <hr />
 
 
