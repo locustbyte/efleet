@@ -48,6 +48,9 @@ body{
 .pad0{
   padding: 0!important;
 }
+.m-0{
+  margin: 0 !important;
+}
 .p-0{
   margin: 0 0 0;
 }
@@ -328,11 +331,50 @@ span.round-tab:hover {
  */
 // injector
 // endinjector
-
+.form-control{
+  height: 42px;
+  border-radius: 0;
+}
 .nissan-site{
+  #smartwizard{
+    .sw-btn-next{
+      background-color: #c71444;
+      color: white;
+      &:hover{
+        background: black;
+        color: white;
+      }
+    }
+    .sw-btn-prev{
+      border: 1px solid #c71444;
+      &:hover{
+        background: black;
+        color: white;
+      }
+    }
+    .nav-tabs{
+      background-color: #c71444;
+      .nav-item{
+        a{
+          color: #d8d8d8;
+        }
+        &.active{
+          a{
+            color: white !important;
+            font-size: 2rem;
+          }
+        }
+        &.done{
+          a{
+            color: #d7fd64 !important;
+          }
+        }
+      }
+    }
+  }
   .tab-content{
-    border: 1px solid #c71444;
-    margin-top: -1px;
+    // border: 1px solid #c71444;
+    // margin-top: -1px;
   }
   .nav > li > a:hover{
     border-bottom: 1px solid #c71344;
@@ -466,4 +508,18 @@ span.round-tab:hover {
       }
     }
   }
+}
+
+.sw-theme-default .step-content {
+  padding: 0;
+}
+.sw-theme-default>ul.step-anchor>li.done>a::after {
+  background: transparent;
+}
+.sw-theme-default>ul.step-anchor>li>a::after {
+  background: transparent;
+}
+.sw-theme-default .sw-toolbar-bottom {
+  /* border-top-color: #6d5f5f!important; */
+  border-top: 1px solid #dedede !important;
 }
