@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  
+
   angular
     .module('eFleet')
     .controller('MainController', MainController);
@@ -27,22 +29,25 @@
       url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/login'
     }).then(function successCallback(response) {
       console.log(response)
+      console.log(response.headers)
+      $http({
+        method: 'GET',
+        headers:  { 'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json' },
+        url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/agreements?search_value=2100554827'
+      }).then(function successCallback(response) {
+        console.log(response)
+        // this callback will be called asynchronously
+        // when the response is available
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
       // this callback will be called asynchronously
       // when the response is available
     }, function errorCallback(response) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
     });
-
-    //Wizard Validation
-    // $scope.enterValidation = function(){
-
-    //   if ( $("#propnumber").val().length !== 10 ) {
-    //     return false;
-    //   } else {
-    //     return false;
-    //   }
-    // };
 
     vm.doLookup = function () {
       $location.path("/code");
