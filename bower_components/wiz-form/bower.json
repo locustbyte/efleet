@@ -1,0 +1,24 @@
+{
+  "name": "wiz-form",
+  "version": "0.0.11",
+  "homepage": "https://github.com/dwillie/wiz-form",
+  "authors": [
+    "David Willie"
+  ],
+  "description": "Wizard directive for angularjs",
+  "keywords": [
+    "wizard",
+    "angularjs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": ">= 1.1.5"
+  }
+}
