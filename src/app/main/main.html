@@ -41,48 +41,56 @@
 
                 </div>
                 <div class="col-md-4 form-part">
-                  <p class="ft13"><strong>Locate your proposal</strong></p>
-                  <p>Signing your agreement electronially couldn't be easier. First we need to find your proposal, you
-                    can help us by completing the following fields.</p><br />
-                  <form name="formStep1" id="formStep1" novalidate>
-                    <div class="form-group">
-                      <label for="propnumber">Proposal number*</label><br />
-                      <small>(typically 10 digits)</small>
-                      <input type="number" ng-model="login.propnumber" class="form-control"
-                        name="propnumber" id="propnumber" required ng-minlength="10"
-                        ng-maxlength="10" />
-                      <p ng-show="formStep1.propnumber.$error.minlength" class="help-block">Proposal number is too short.</p>
-                      <p ng-show="formStep1.propnumber.$error.maxlength" class="help-block">Proposal number is too long.</p>
-                    </div>
-                    
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Date of birth*</label>
-                      <p class="input-group">
-                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt"
-                          is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"
-                          alt-input-formats="altInputFormats" />
-                        <span class="input-group-btn">
-                          <button type="button" class="btn btn-danger" ng-click="open1()"><i
-                              class="glyphicon glyphicon-calendar"></i></button>
-                        </span>
-                      </p>
-                    </div>
-                    <div class="form-group">
-                      <label>Email Address*</label>
-                      <input type="email" class="form-control" id="emailAddress" name="emailAddress" ng-model="login.email" required>
-                      <p ng-show="formStep1.emailAddress.$invalid && !formStep1.emailAddress.$pristine" class="help-block">Please enter a valid email address.</p>
-                        
-                        
-                    </div>
-                    <!-- <label class="switch">
-                      <input id="inclPhoto" type="checkbox">
-                      <span class="slider round"></span>
-                    </label> -->
+                  <div ng-if="main.startprocessstatus == false">
+                    <h1 class=""><strong>Before you begin</strong></h1><br />
+                    <p class="ft13"><strong>A couple of things you will need to have handy</strong></p>
                     <br />
-                    <!-- <input type="submit" class="btn btn-danger" wz-next value="Verify Details" /> -->
+                    <p>1. You should be using a device which has a camera (for the selfie authentication process).</p>
+                    <p>2. Your drivers licence (you will need to provide a photo of your licence).</p>
+                    <br />
+                    <p><strong>If you have these things, you can continue.</strong></p><br />
+                    <button class="btn btn-secondary sw-btn-start" ng-click="main.startprocess();">START PROCESS</button>
+                  </div>
+                  <div ng-if="main.startprocessstatus == true">
+                    <p class="ft13"><strong>Locate your proposal</strong></p>
+                    <p>Signing your agreement electronially couldn't be easier. First we need to find your proposal, you
+                      can help us by completing the following fields.</p><br />
+                    <form name="formStep1" id="formStep1" novalidate>
+                      <div class="form-group">
+                        <label for="propnumber">Proposal number*</label><br />
+                        <small>(typically 10 digits)</small>
+                        <input type="number" ng-model="login.propnumber" class="form-control"
+                          name="propnumber" id="propnumber" required ng-minlength="10"
+                          ng-maxlength="10" />
+                        <p ng-show="formStep1.propnumber.$error.minlength" class="help-block">Proposal number is too short.</p>
+                        <p ng-show="formStep1.propnumber.$error.maxlength" class="help-block">Proposal number is too long.</p>
+                      </div>
+                      
 
-                  </form>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Date of birth*</label>
+                        <p class="input-group">
+                          <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt"
+                            is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"
+                            alt-input-formats="altInputFormats" />
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-danger" ng-click="open1()"><i
+                                class="glyphicon glyphicon-calendar"></i></button>
+                          </span>
+                        </p>
+                      </div>
+                      <div class="form-group">
+                        <label>Email Address*</label>
+                        <input type="email" class="form-control" id="emailAddress" name="emailAddress" ng-model="login.email" required>
+                        <p ng-show="formStep1.emailAddress.$invalid && !formStep1.emailAddress.$pristine" class="help-block">Please enter a valid email address.</p>
+                          
+                          
+                      </div>
+                      <br />
+                      
+
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -217,6 +225,16 @@
     <uib-tab index="2" heading="Contact">
       <div class="p-20">
         Contact Content
+      </div>
+    </uib-tab>
+    <uib-tab index="3" heading="Help uploading">
+      <div class="p-20">
+        Upload help content
+      </div>
+    </uib-tab>
+    <uib-tab index="3" heading="Help with 'Selfie' upload">
+      <div class="p-20">
+        Selfie help content
       </div>
     </uib-tab>
   </uib-tabset>

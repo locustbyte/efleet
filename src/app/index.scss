@@ -344,6 +344,15 @@ span.round-tab:hover {
       color: #adadad !important;
   }
   #smartwizard{
+
+    .sw-btn-start{
+      background-color: #c71444;
+      color: white;
+      &:hover{
+        background: black;
+        color: white;
+      }
+    }
     
     .sw-btn-next{
       background-color: #c71444;

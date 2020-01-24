@@ -10,6 +10,7 @@
   /** @ngInject */
   function MainController($timeout, webDevTec, $location, $scope, $http) {
     var vm = this;
+    vm.startprocessstatus = false;
     vm.codeType = "";
     vm.codeStat = "";
 
@@ -19,7 +20,6 @@
 
     if (vm.host.indexOf('.') >= 0) {
       vm.service.company = vm.host.split('.')[0];
-      console.log(vm.service)
     }
 
     // Simple GET request:
@@ -29,7 +29,7 @@
       url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/login'
     }).then(function successCallback(response) {
       console.log(response)
-      console.log(response.headers)
+      console.log(response.headers()['x-auth-token'])
       $http({
         method: 'GET',
         headers:  { 'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json' },
@@ -48,6 +48,10 @@
       // called asynchronously if an error occurs
       // or server returns response with an error status.
     });
+
+    vm.startprocess = function(){
+      vm.startprocessstatus = true;
+    }
 
     vm.doLookup = function () {
       $location.path("/code");
