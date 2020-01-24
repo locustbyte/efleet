@@ -6,14 +6,13 @@
     .controller('CodeController', CodeController);
 
   /** @ngInject */
-  function CodeController($timeout, webDevTec, toastr, $location) {
+  function CodeController($timeout, webDevTec, $location) {
     var vm = this;
 
     vm.awesomeThings = [];
     vm.classAnimation = '';
     vm.creationDate = 1578480265634;
-    vm.showToastr = showToastr;
-
+    
     activate();
     
     vm.goback = function(){
@@ -31,11 +30,7 @@
       }, 4000);
     }
 
-    function showToastr() {
-      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-      vm.classAnimation = '';
-    }
-
+    
     function getWebDevTec() {
       vm.awesomeThings = webDevTec.getTec();
 

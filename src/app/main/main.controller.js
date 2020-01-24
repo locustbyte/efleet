@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr, $location, $scope) {
+  function MainController($timeout, webDevTec, $location, $scope) {
     var vm = this;
     vm.codeType = "";
     vm.codeStat = "";
