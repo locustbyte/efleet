@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, $location, $scope) {
+  function MainController($timeout, webDevTec, $location, $scope, $http) {
     var vm = this;
     vm.codeType = "";
     vm.codeStat = "";
@@ -19,6 +19,20 @@
       vm.service.company = vm.host.split('.')[0];
       console.log(vm.service)
     }
+
+    // Simple GET request:
+    $http({
+      method: 'GET',
+      headers:  { 'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json' },
+      url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/login'
+    }).then(function successCallback(response) {
+      console.log(response)
+      // this callback will be called asynchronously
+      // when the response is available
+    }, function errorCallback(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    });
 
     //Wizard Validation
     // $scope.enterValidation = function(){
