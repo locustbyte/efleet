@@ -41,7 +41,13 @@ body{
     }
   }
 }
-
+.loader-cover{
+  width: 100%;
+  height: 100%;
+  // background: rgba(0,0,0,0.5);
+  position: absolute;
+  text-align: center;
+}
 .nav-tabs > li a:hover{
   color: black;
 }
@@ -235,7 +241,14 @@ span.round-tab:hover {
 .wizard h3 {
   margin-top: 0;
 }
-
+.alert{
+  font-size: 16px;
+}
+.doc-iframe{
+  border: 0;
+  width: 100%;
+  height: 700px;
+}
 @media( max-width : 585px ) {
 
   .wizard {
@@ -615,4 +628,51 @@ input:checked + .slider:before {
 .btn-toolbar{
   display: flex;
     justify-content: flex-end;
+}
+
+/*Spinner*/
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 80px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  p{
+    font-size: 4rem;
+    font-weight: bold;
+  }
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #c71344 transparent transparent transparent;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

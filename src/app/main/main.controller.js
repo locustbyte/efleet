@@ -14,6 +14,9 @@
     vm.codeType = "";
     vm.codeStat = "";
 
+    $scope.findProp = {};
+    
+
     //Brand diversion
     vm.service = {};
     vm.host = $location.host();
@@ -29,19 +32,37 @@
       url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/login'
     }).then(function successCallback(response) {
       console.log(response)
-      console.log(response.headers()['x-auth-token'])
-      $http({
-        method: 'GET',
-        headers:  { 'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json' },
-        url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/agreements?search_value=2100554827'
-      }).then(function successCallback(response) {
-        console.log(response)
-        // this callback will be called asynchronously
-        // when the response is available
-      }, function errorCallback(response) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-      });
+      if ( !sessionStorage.auth) {
+        sessionStorage.auth = response.headers()['x-auth-token'];
+      }
+      
+      console.log(sessionStorage.auth)
+          $http({
+            method: 'GET',
+            headers:  { 'x-auth-token': sessionStorage.auth, 'Content-Type': 'application/json' },
+            url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/agreements?search_value=2100554827'
+          }).then(function successCallback(response) {
+            console.log(response)
+            $http({
+              method: 'PUT',
+              data: {"selected_dealership_actor_code": "010000000362","selected_sales_executive_actor_code":"010001460890","stage":"LOGIN"},
+              headers:  { 'x-auth-token': sessionStorage.auth, 'Content-Type': 'application/json' },
+              url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/dealer_selection'
+            }).then(function successCallback(response) {
+              console.log(response)
+              // this callback will be called asynchronously
+              // when the response is available
+            }, function errorCallback(response) {
+              // called asynchronously if an error occurs
+              // or server returns response with an error status.
+            });
+            // this callback will be called asynchronously
+            // when the response is available
+          }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+          });
+          
       // this callback will be called asynchronously
       // when the response is available
     }, function errorCallback(response) {
@@ -61,21 +82,18 @@
 
 
     $scope.units = [
-      {'id': 0, 'label': 'Please Choose'},
+      {'id': 0, 'label': 'Please choose a method for receiving the code'},
       {'id': 1, 'label': 'Email'},
       {'id': 2, 'label': 'SMS'},
+      {'id': 3, 'label': 'Both Email and SMS'},
     ]
 
     $scope.codeTypeSelect = $scope.units[0];
 
     vm.codeTypeSelected = function(selectedCodeChoice){
       $scope.codeTypeSelect = selectedCodeChoice;
-      console.log(selectedCodeChoice.label)
-      if ( selectedCodeChoice.label === 'Email') {
-        vm.codeType = 'Email';
-      } else {
-        vm.codeType = 'SMS';
-      }
+      $scope.findProp.codePref = selectedCodeChoice;
+      console.log($scope.findProp)
     }
 
     //Do API call to get code via requested method
@@ -182,7 +200,10 @@
         
         switch (stepNumber) {
           case 0:
-
+          
+          // $scope.findProp = {};
+          // $scope.findProp.propnumber = $('#propnumber').val();
+          console.log($scope.findProp)
 
             if ( $("#propnumber").val().length === 10 ) {
               console.log('yes');
@@ -199,7 +220,7 @@
             break;
           case 1:
             console.log($scope.codeTypeSelect)
-            if ( $scope.codeTypeSelect.label == "Please Choose") {
+            if ( $scope.codeTypeSelect.label == "Please choose a method for receiving the code") {
               return false;
             } else {
               return true;
@@ -374,6 +395,20 @@
                 break;
               case 4:
                 $(".sw-btn-next").text("MEMBER CENTER")
+                $http({
+                  method: 'GET',
+                  headers:  { 'x-auth-token': sessionStorage.auth, 'Content-Type': 'application/json' },
+                  url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/documents/generateContractSignDoc/agreement/17323254'
+                }).then(function successCallback(response) {
+                  console.log(response.data.data.redirection_url)
+                  $("#doSignAgreement").attr("src",response.data.data.redirection_url)
+                  $(".loader-cover").addClass("hide")
+                  // this callback will be called asynchronously
+                  // when the response is available
+                }, function errorCallback(response) {
+                  // called asynchronously if an error occurs
+                  // or server returns response with an error status.
+                });
                 break;
               default:
                 $(".sw-btn-next").text("LOCATE PROPOSAL")
