@@ -8,7 +8,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, $location, $scope, $http) {
+  function MainController($timeout, webDevTec, $location, $scope, $http, $window) {
     var vm = this;
     vm.startprocessstatus = false;
     vm.codeType = "";
@@ -32,21 +32,21 @@
       url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/login'
     }).then(function successCallback(response) {
       console.log(response)
-      if ( !sessionStorage.auth) {
-        sessionStorage.auth = response.headers()['x-auth-token'];
+      if ( !$window.sessionStorage.getItem("auth") ) {
+        $window.sessionStorage.setItem("auth", response.headers()['x-auth-token']);
       }
       
-      console.log(sessionStorage.auth)
+      console.log($window.sessionStorage.getItem("auth"))
           $http({
             method: 'GET',
-            headers:  { 'x-auth-token': sessionStorage.auth, 'Content-Type': 'application/json' },
+            headers:  { 'x-auth-token': $window.sessionStorage.getItem("auth"), 'Content-Type': 'application/json' },
             url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/agreements?search_value=2100554827'
           }).then(function successCallback(response) {
             console.log(response)
             $http({
               method: 'PUT',
               data: {"selected_dealership_actor_code": "010000000362","selected_sales_executive_actor_code":"010001460890","stage":"LOGIN"},
-              headers:  { 'x-auth-token': sessionStorage.auth, 'Content-Type': 'application/json' },
+              headers:  { 'x-auth-token': $window.sessionStorage.getItem("auth"), 'Content-Type': 'application/json' },
               url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/dealer_selection'
             }).then(function successCallback(response) {
               console.log(response)
@@ -72,6 +72,7 @@
 
     vm.startprocess = function(){
       vm.startprocessstatus = true;
+      $(".sw-btn-next").removeClass("hide")
     }
 
     vm.doLookup = function () {
@@ -219,12 +220,15 @@
             
             break;
           case 1:
-            console.log($scope.codeTypeSelect)
-            if ( $scope.codeTypeSelect.label == "Please choose a method for receiving the code") {
-              return false;
-            } else {
-              return true;
+            console.log(stepDirection)
+            if ( stepDirection != "backward" ) {
+              if ( $scope.codeTypeSelect.label == "Please choose a method for receiving the code") {
+                return false;
+              } else {
+                return true;
+              }
             }
+            
            //return true;
            $(".sw-btn-next").text("VALIDATE CODE");
             break;
@@ -294,13 +298,13 @@
       function () {
         $timeout(function () {
 
+          
           $('#inclPhoto').change(function() {
             alert($(this).prop('checked'))
           })
           
           $('#smartwizard').smartWizard({
             keyNavigation: true,
-            disabledSteps: [3],
             lang: {  // Language variables
               next: 'LOCATE PROPOSAL', 
               previous: 'PREVIOUS'
@@ -325,6 +329,7 @@
             },
           });
           $(".sw-btn-next").text("LOCATE PROPOSAL")
+          $(".sw-btn-next").addClass("hide")
           $(".sw-btn-prev").addClass("hide")
 
 

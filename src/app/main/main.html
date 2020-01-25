@@ -49,7 +49,7 @@
                     <p>2. Your drivers licence (you will need to provide a photo of your licence).</p>
                     <br />
                     <p><strong>If you have these things, you can continue.</strong></p><br />
-                    <button class="btn btn-secondary sw-btn-start" ng-click="main.startprocess();">START PROCESS</button>
+                    <button class="btn btn-secondary sw-btn-start" ng-click="main.startprocess();">START SIGNING PROCESS</button>
                   </div>
                   <div ng-if="main.startprocessstatus == true">
                     <p class="ft13"><strong>Locate your proposal</strong></p>
@@ -109,9 +109,8 @@
                           ng-options="opt as opt.label for opt in units " class="form-control"></select>
                           <p ng-if="codeTypeSelect.label == 'Please choose a method for receiving the code'" class="help-block">You must make a choice above.</p>
                       </div>
-                      <p ng-if="main.codeType == 'Email' && codeTypeSelect.label != 'Please Choose'">We will send an email to <strong>{{login.email}}</strong></p>
-                      <p ng-if="main.codeType == 'SMS' && codeTypeSelect.label != 'Please Choose'">We will send an SMS to [MOBILE]</p>
-                      <p>Once you have made a choice Click 'SEND CODE' to continue.</p>
+                      
+                      <br /><p>Once you have made a choice Click 'SEND CODE' to continue.</p>
                       <!-- <button class="btn btn-secondary sw-btn-next">SEND CODE</button> -->
 
                       <!-- <br />
@@ -128,8 +127,15 @@
                 <div class="col-md-4 form-part">
                   <div ng-if="main.codeStat != 'received'">
                     <p>
-                      <div class="alert alert-warning" role="alert"><strong>NOTE: </strong>We can only send the code to either your registered email address or
-                        registered mobile number. That which is recorded against the proposal number.</div>
+                      
+                        <div class="alert alert-info" ng-if="findProp.codePref">
+                          <p class="ft17">We will send a code to:</p>
+                      <span ng-if="findProp.codePref.id === 1">Email address: <strong>{{findProp.email}}</strong><br /></span>
+                      <span ng-if="findProp.codePref.id === 2">Mobile number: <strong>{{findProp.email}}</strong><br /></span>
+                      <span ng-if="findProp.codePref.id === 3">Email address: <strong>{{findProp.email}}</strong> and your <br />mobile number: <strong>{{findProp.email}}</strong><br /><br /></span>
+                        </div>
+                        <div class="alert alert-warning" role="alert"><strong>NOTE: </strong>We can only send the code to either your registered email address or
+                          registered mobile number. That which is recorded against the proposal number.</div>
                     </p>
                   </div>
 
@@ -179,7 +185,14 @@
               </div>
             </div>
             <div id="step-4" class="">
-              Step Content
+              <div class="row m-0 equal">
+                <div class="col-md-8 p-20">
+                  left
+                </div>
+                <div class="col-md-4 p-20">
+                  Right
+                </div>
+              </div>
             </div>
             <div id="step-5" class="">
               
