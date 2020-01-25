@@ -48,8 +48,12 @@ body{
   position: absolute;
   text-align: center;
 }
-.nav-tabs > li a:hover{
-  color: black;
+
+.nav-tabs > li {
+  margin-bottom: 0px !important;
+  a:hover{
+    color: black;
+  }
 }
 .pad0{
   padding: 0!important;
@@ -83,7 +87,8 @@ $navbar-inverse-link-color: #5AADBB;
 }
 
 .navbar .navbar-collapse{
-  border-bottom: 1px solid #c40030;
+  // border-bottom: 1px solid #c40030;
+  border-bottom: 0;
 }
 .navbar-nav{
   float: right;
@@ -353,6 +358,9 @@ span.round-tab:hover {
   flex-wrap: wrap;
 }
 .nissan-site{
+  .nav-tabs {
+    border-bottom: 1px solid #c40030;
+  }
   #smartwizard .nav-tabs .nav-item a {
       color: #adadad !important;
   }
