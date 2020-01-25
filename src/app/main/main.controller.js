@@ -31,7 +31,7 @@
       headers:  { 'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json' },
       url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/login'
     }).then(function successCallback(response) {
-      console.log(response)
+      console.log(response.headers())
       if ( !$window.sessionStorage.getItem("auth") ) {
         $window.sessionStorage.setItem("auth", response.headers()['x-auth-token']);
       }
@@ -278,7 +278,7 @@
             $(".sw-btn-next").text("MEMBER CENTER")
             break;
           case 3:
-            $(".sw-btn-next").text("LOCATE PROPOSAL")
+            $(".sw-btn-next").text("UPLOAD")
             break;
           case 4:
             $(".sw-btn-next").text("LOCATE PROPOSAL")
@@ -396,7 +396,7 @@
                 $(".sw-btn-next").text("VALIDATE CODE")
                 break;
               case 3:
-                $(".sw-btn-next").text("LOCATE PROPOSAL")
+                $(".sw-btn-next").text("UPLOAD")
                 break;
               case 4:
                 $(".sw-btn-next").text("MEMBER CENTER")

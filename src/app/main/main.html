@@ -129,10 +129,10 @@
                     <p>
                       
                         <div class="alert alert-info" ng-if="findProp.codePref">
-                          <p class="ft17">We will send a code to:</p>
+                          <p class="ft13">We will send a code to:</p>
                       <span ng-if="findProp.codePref.id === 1">Email address: <strong>{{findProp.email}}</strong><br /></span>
-                      <span ng-if="findProp.codePref.id === 2">Mobile number: <strong>{{findProp.email}}</strong><br /></span>
-                      <span ng-if="findProp.codePref.id === 3">Email address: <strong>{{findProp.email}}</strong> and your <br />mobile number: <strong>{{findProp.email}}</strong><br /><br /></span>
+                      <span ng-if="findProp.codePref.id === 2">Your registered mobile number.<br /></span>
+                      <span ng-if="findProp.codePref.id === 3">Both your email address: <strong>{{findProp.email}}</strong> and your <br />registered mobile number<br /><br /></span>
                         </div>
                         <div class="alert alert-warning" role="alert"><strong>NOTE: </strong>We can only send the code to either your registered email address or
                           registered mobile number. That which is recorded against the proposal number.</div>
@@ -251,16 +251,33 @@
         Contact Content
       </div>
     </uib-tab>
-    <uib-tab index="3" heading="Help uploading">
-      <div class="p-20">
-        Upload help content
+    <uib-tab index="3" heading="Help / Support" class="pull-right">
+      <div class="row p-20">
+        <div class="col-lg-8">
+          <p class="ft17 nis-light"><strong>Uploading my licence</strong></p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius et massa nec tempor. Aliquam pulvinar,
+            enim id blandit facilisis, erat nisi efficitur neque, vitae sagittis turpis odio et quam. Maecenas egestas
+            volutpat nulla, id cursus enim malesuada eu. Sed id sagittis nunc, tempus efficitur ante. Nam at diam eget
+            purus vestibulum egestas. Nulla tempor euismod dolor vitae fringilla. Aenean pellentesque tellus vel nisl
+            accumsan, elementum vestibulum felis efficitur. Nulla facilisi. Nullam eleifend congue erat, at semper enim
+            tristique vel. Duis efficitur tincidunt lacus vel vulputate. Integer mollis cursus massa, ut ultrices enim.
+            Donec eget ultrices neque.</p>
+            <p class="ft17 nis-light"><strong>Selfie upload</strong></p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius et massa nec tempor. Aliquam pulvinar,
+            enim id blandit facilisis, erat nisi efficitur neque, vitae sagittis turpis odio et quam. Maecenas egestas
+            volutpat nulla, id cursus enim malesuada eu. Sed id sagittis nunc, tempus efficitur ante. Nam at diam eget
+            purus vestibulum egestas. Nulla tempor euismod dolor vitae fringilla. Aenean pellentesque tellus vel nisl
+            accumsan, elementum vestibulum felis efficitur. Nulla facilisi. Nullam eleifend congue erat, at semper enim
+            tristique vel. Duis efficitur tincidunt lacus vel vulputate. Integer mollis cursus massa, ut ultrices enim.
+            Donec eget ultrices neque.</p>
+        </div>
+        <div class="col-lg-4">
+          <p class="ft17 nis-light"><strong>Need more help?</strong></p>
+          <p>+44 (0) 800 123 456</p>
+        </div>
       </div>
     </uib-tab>
-    <uib-tab index="4" heading="Help with 'Selfie' upload">
-      <div class="p-20">
-        Selfie help content
-      </div>
-    </uib-tab>
+    
   </uib-tabset>
 
 
