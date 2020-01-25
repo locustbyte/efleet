@@ -459,13 +459,80 @@ span.round-tab:hover {
 }
 
 .dacia-site{
+  #smartwizard .nav-tabs .nav-item a {
+      color: #232323 !important;
+  }
+  .btn-danger{
+    background-color: #007fc6;
+    color: white;
+  }
+  #smartwizard{
+
+    .sw-btn-start{
+      background-color: #007fc6;
+      color: white;
+      &:hover{
+        background: black;
+        color: white;
+      }
+    }
+    
+    .sw-btn-next{
+      background-color: #007fc6;
+      color: white;
+      &:hover{
+        background: black;
+        color: white;
+      }
+    }
+    .sw-btn-prev{
+      border: 1px solid #007fc6;
+      &:hover{
+        background: black;
+        color: white;
+      }
+    }
+    .nav-tabs{
+      background-color: #007fc6;
+      .nav-item{
+        a{
+          color: #d8d8d8;
+        }
+        &.active{
+          a{
+            color: white !important;
+            font-size: 3.5rem;
+            padding: 0;
+          }
+        }
+        &.done{
+          a{
+            color: #000000 !important;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+  .tab-content{
+    // border: 1px solid #c71444;
+    // margin-top: -1px;
+  }
+  .nav > li > a:hover{
+    border-bottom: 1px solid #c71344;
+  }
+  .nav-tabs > li.active > a{
+    border-bottom: 1px solid white !important;
+  }
   .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    border: 1px solid #02326a;
+    border: 1px solid #c40031;
     border-radius: 0px;
+    margin-left: 1px;
   }
   .footer{
-    background: #02326a;
-    color: white;
+      background: #c71444;
+      color: white;
+    
   }
   .main-wizard{
     h2{
@@ -473,40 +540,151 @@ span.round-tab:hover {
     }
     .steps-indicator{
       margin-bottom: 30px;
-      background: #02326a;
+      background: #c71444;
       // margin-top: 20px;
       li{
-        background: #02326a;
+        background: #c71444;
         color: white;
-        padding-bottom: 13px;
+        padding-bottom: 40px;
+        padding-top: 35px;
         a{
           color: white;
           &::before{
+            margin-top: 20px;
             color: #1dd61d;
           }
         }
       }
       li.current{
         a::before{
-          background-color: black;
+          background-color: #000000;
         }
       }
       li.done{
         a::before{
-          background-color: #21fb21;
+          background-color: #649c64;
         }
       }
     }
   }
 }
+// .renault-site{
+//   .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+//     border: 1px solid #c28829;
+//     border-radius: 0px;
+//   }
+//   .footer{
+//     background: #c28829;
+//     color: white;
+//   }
+//   .main-wizard{
+//     h2{
+//     display: none;
+//     }
+//     .steps-indicator{
+//       margin-bottom: 30px;
+//       background: #c28829;
+//       // margin-top: 20px;
+//       li{
+//         background: #c28829;
+//         color: white;
+//         padding-bottom: 13px;
+//         a{
+//           color: white;
+//           &::before{
+//             color: #1dd61d;
+//           }
+//         }
+//       }
+//       li.current{
+//         a::before{
+//           background-color: black;
+//         }
+//       }
+//       li.done{
+//         a::before{
+//           background-color: #21fb21;
+//         }
+//       }
+//     }
+//   }
+// }
+
 .renault-site{
+  #smartwizard .nav-tabs .nav-item a {
+      color: #232323 !important;
+  }
+  .btn-danger{
+    background-color: #ffda66;
+    color: black;
+  }
+  #smartwizard{
+
+    .sw-btn-start{
+      background-color: #ffda66;
+      color: black;
+      &:hover{
+        background: black;
+        color: white;
+      }
+    }
+    
+    .sw-btn-next{
+      background-color: #ffda66;
+      color: black;
+      &:hover{
+        background: black;
+        color: white;
+      }
+    }
+    .sw-btn-prev{
+      border: 1px solid #ffda66;
+      &:hover{
+        background: black;
+        color: white;
+      }
+    }
+    .nav-tabs{
+      background-color: #ffda66;
+      .nav-item{
+        a{
+          color: #d8d8d8;
+        }
+        &.active{
+          a{
+            color: black !important;
+            font-size: 3.5rem;
+            padding: 0;
+          }
+        }
+        &.done{
+          a{
+            color: #000000 !important;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+  .tab-content{
+    // border: 1px solid #c71444;
+    // margin-top: -1px;
+  }
+  .nav > li > a:hover{
+    border-bottom: 1px solid #c71344;
+  }
+  .nav-tabs > li.active > a{
+    border-bottom: 1px solid white !important;
+  }
   .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    border: 1px solid #c28829;
+    border: 1px solid #c40031;
     border-radius: 0px;
+    margin-left: 1px;
   }
   .footer{
-    background: #c28829;
-    color: white;
+      background: #c71444;
+      color: white;
+    
   }
   .main-wizard{
     h2{
@@ -514,27 +692,29 @@ span.round-tab:hover {
     }
     .steps-indicator{
       margin-bottom: 30px;
-      background: #c28829;
+      background: #c71444;
       // margin-top: 20px;
       li{
-        background: #c28829;
+        background: #c71444;
         color: white;
-        padding-bottom: 13px;
+        padding-bottom: 40px;
+        padding-top: 35px;
         a{
           color: white;
           &::before{
+            margin-top: 20px;
             color: #1dd61d;
           }
         }
       }
       li.current{
         a::before{
-          background-color: black;
+          background-color: #000000;
         }
       }
       li.done{
         a::before{
-          background-color: #21fb21;
+          background-color: #649c64;
         }
       }
     }

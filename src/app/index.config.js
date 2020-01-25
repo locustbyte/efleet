@@ -6,10 +6,10 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, $httpProvider, $httpProvider) {
+  function config($logProvider, $httpProvider) {
     var apiRequestCount = 0;    
     // Enable log
-    $http.defaults.headers.common['Authorization'] = 'Basic ' + token;
+    //$http.defaults.headers.common['Authorization'] = 'Basic ' + token;
     $logProvider.debugEnabled(true);
     $httpProvider.interceptors.push(function ($rootScope, $q) {
       return {
