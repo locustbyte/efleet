@@ -72,7 +72,7 @@
 
     vm.startprocess = function(){
       vm.startprocessstatus = true;
-      $(".sw-btn-next").removeClass("hide")
+      $(".btn-toolbar").removeClass("hide")
     }
 
     vm.doLookup = function () {
@@ -329,7 +329,7 @@
             },
           });
           $(".sw-btn-next").text("LOCATE PROPOSAL")
-          $(".sw-btn-next").addClass("hide")
+          $(".btn-toolbar").addClass("hide")
           $(".sw-btn-prev").addClass("hide")
 
 
