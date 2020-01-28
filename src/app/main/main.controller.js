@@ -32,16 +32,11 @@
         headers:  { 'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json' },
         url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/login'
       }).then(function successCallback(response) {
-        // var token = $cookies.get('XSRF-TOKEN');
-        console.log(response)
         
         if ( !sessionStorage.getItem("auth") ) {
           sessionStorage.setItem("auth", response.headers()['x-auth-token']);
         }
-        console.log(response.config)
         
-        console.log(sessionStorage.getItem("auth"))
-
         $scope.doGetDealership();
 
         // this callback will be called asynchronously

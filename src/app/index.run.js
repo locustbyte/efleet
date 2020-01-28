@@ -10,10 +10,10 @@
     $http.defaults.xsrfHeaderName = 'X-CSRFToken';
     $http.defaults.xsrfCookieName = 'csrftoken';
     $log.debug('runBlock end');
-    $http.get('http://test-routes.herokuapp.com/test/hello')
-    .then(function(res) {
-      console.log(res.data.message)
-    })
+    // $http.get('https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/login')
+    // .then(function(res) {
+    //   //console.log(res)
+    // })
   }
 
 })();
