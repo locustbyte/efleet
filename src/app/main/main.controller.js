@@ -8,7 +8,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, $location, $scope, $http, $window) {
+  function MainController($timeout, webDevTec, $location, $scope, $http, $window, $cookies) {
     var vm = this;
     vm.startprocessstatus = false;
     vm.codeType = "";
@@ -25,50 +25,67 @@
       vm.service.company = vm.host.split('.')[0];
     }
 
+    $scope.doApiLogin = function() {
+      sessionStorage.removeItem("auth");
+      $http({
+        method: 'GET',
+        headers:  { 'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json' },
+        url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/login'
+      }).then(function successCallback(response) {
+        // var token = $cookies.get('XSRF-TOKEN');
+        console.log(response)
+        
+        if ( !sessionStorage.getItem("auth") ) {
+          sessionStorage.setItem("auth", response.headers()['x-auth-token']);
+        }
+        console.log(response.config)
+        
+        console.log(sessionStorage.getItem("auth"))
+
+        $scope.doGetDealership();
+
+        // this callback will be called asynchronously
+        // when the response is available
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
+    }
+
+    $scope.doGetDealership = function(){
+      $http({
+        method: 'PUT',
+        data: {"selected_dealership_actor_code": "010000000362","selected_sales_executive_actor_code":"010001460890","stage":"LOGIN"},
+        url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/dealer_selection'
+      }).then(function successCallback(response) {
+        console.log(response)
+        // this callback will be called asynchronously
+        // when the response is available
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
+    }
+
+    $scope.doSearchAgreementByID = function(){
+      $http({
+        method: 'GET',
+        url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/agreements?search_value=2100554827'
+      }).then(function successCallback(response) {
+        console.log(response)
+        
+        // this callback will be called asynchronously
+        // when the response is available
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
+    }
+
+    $scope.doApiLogin();
+
     // Simple GET request:
-    $http({
-      method: 'GET',
-      headers:  { 'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json' },
-      url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/login'
-    }).then(function successCallback(response) {
-      console.log(response.headers())
-      if ( !$window.sessionStorage.getItem("auth") ) {
-        $window.sessionStorage.setItem("auth", response.headers()['x-auth-token']);
-      }
-      
-      console.log($window.sessionStorage.getItem("auth"))
-          $http({
-            method: 'GET',
-            headers:  { 'x-auth-token': $window.sessionStorage.getItem("auth"), 'Content-Type': 'application/json' },
-            url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/agreements?search_value=2100554827'
-          }).then(function successCallback(response) {
-            console.log(response)
-            $http({
-              method: 'PUT',
-              data: {"selected_dealership_actor_code": "010000000362","selected_sales_executive_actor_code":"010001460890","stage":"LOGIN"},
-              headers:  { 'x-auth-token': $window.sessionStorage.getItem("auth"), 'Content-Type': 'application/json' },
-              url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/dealer_selection'
-            }).then(function successCallback(response) {
-              console.log(response)
-              // this callback will be called asynchronously
-              // when the response is available
-            }, function errorCallback(response) {
-              // called asynchronously if an error occurs
-              // or server returns response with an error status.
-            });
-            // this callback will be called asynchronously
-            // when the response is available
-          }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-          });
-          
-      // this callback will be called asynchronously
-      // when the response is available
-    }, function errorCallback(response) {
-      // called asynchronously if an error occurs
-      // or server returns response with an error status.
-    });
+    
 
     vm.startprocess = function(){
       vm.startprocessstatus = true;
@@ -118,6 +135,7 @@
     $scope.dateOptions = {
       dateDisabled: disabled,
       formatYear: 'yy',
+      formatDay: 'dd',
       maxDate: new Date(2020, 5, 22),
       minDate: new Date(),
       startingDay: 1
