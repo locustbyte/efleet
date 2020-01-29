@@ -23,7 +23,9 @@
     "angular-strap": "^2.3.12",
     "angular-ui-mask": "^1.8.7",
     "jquery.steps": "^1.1.0",
-    "smartwizard": "^4.3.1"
+    "smartwizard": "^4.3.1",
+    "restangular": "^1.6.1",
+    "ngstorage": "^0.3.11"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

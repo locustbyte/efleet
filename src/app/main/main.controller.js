@@ -8,13 +8,14 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, $location, $scope, $http, $window, $cookies) {
+  function MainController($timeout, webDevTec, $location, $scope, $http, $window, $cookies, Restangular) {
     var vm = this;
     vm.startprocessstatus = false;
     vm.codeType = "";
     vm.codeStat = "";
 
     $scope.findProp = {};
+    
     
 
     //Brand diversion
@@ -24,6 +25,8 @@
     if (vm.host.indexOf('.') >= 0) {
       vm.service.company = vm.host.split('.')[0];
     }
+    Restangular.setDefaultRequestParams('get', {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl'});
+    Restangular.one('users', 'login').get()
 
     $scope.doApiLogin = function() {
       sessionStorage.removeItem("auth");
