@@ -9,7 +9,7 @@
         config.headers['Content-Type'] = 'application/json'
         
           // config.headers['x-csrf-token'] = sessionStorage.getItem("auth")
-          // config.headers["x-auth-token"] = sessionStorage.getItem("auth")
+          config.headers["x-auth-token"] = sessionStorage.getItem("auth")
         
         return config;
       },
