@@ -19,6 +19,7 @@
       },
   
       response: function(res) {
+        res.headers["x-auth-token"] = sessionStorage.getItem("auth")
         return res;
       },
   

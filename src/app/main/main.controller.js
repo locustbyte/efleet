@@ -30,13 +30,14 @@
       $http({
         method: 'GET',
         headers:  { 'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json' },
-        url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/login'
+        // url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/login'
+        url: 'http://web-v2dev-uk.rci.uk/rcidirect-services/rest/users/login'
       }).then(function successCallback(response) {
         
         if ( !sessionStorage.getItem("auth") ) {
           sessionStorage.setItem("auth", response.headers()['x-auth-token']);
         }
-        
+        console.log(response)
         $scope.doGetDealership();
 
         // this callback will be called asynchronously
@@ -50,10 +51,12 @@
     $scope.doGetDealership = function(){
       $http({
         method: 'PUT',
-        data: {"selected_dealership_actor_code": "010000000362","selected_sales_executive_actor_code":"010001460890","stage":"LOGIN"},
-        url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/dealer_selection'
+        headers: {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json'},
+        data: {"selected_dealership_actor_code": "010000014965","selected_sales_executive_actor_code":"010001460890","stage":"LOGIN"},
+        url: 'http://web-v2dev-uk.rci.uk/rcidirect-services/rest/users/dealer_selection'
       }).then(function successCallback(response) {
-        console.log(response)
+        console.log(response.config)
+        sessionStorage.setItem("selected-dealer", '010000014965');
         // this callback will be called asynchronously
         // when the response is available
       }, function errorCallback(response) {
