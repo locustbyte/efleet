@@ -57,6 +57,7 @@
       }).then(function successCallback(response) {
         console.log(response.config)
         sessionStorage.setItem("selected-dealer", '010000014965');
+        //$scope.doSearchAgreementByID();
         // this callback will be called asynchronously
         // when the response is available
       }, function errorCallback(response) {
@@ -66,9 +67,11 @@
     }
 
     $scope.doSearchAgreementByID = function(){
+      //2200692686
       $http({
         method: 'GET',
-        url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/agreements?search_value=2100554827'
+        headers: {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json'},
+        url: 'http://web-v2dev-uk.rci.uk/rcidirect-services/rest/agreements?search_value=2200692686'
       }).then(function successCallback(response) {
         console.log(response)
         
@@ -81,6 +84,36 @@
     }
 
     $scope.doApiLogin();
+
+    $scope.checkStep0 = function(callback){
+
+      $http({
+        method: 'GET',
+        headers: {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json'},
+        url: 'http://web-v2dev-uk.rci.uk/rcidirect-services/rest/agreements?search_value='+$scope.findProp.propnumber
+      }).then(function successCallback(response) {
+        console.log(response.data.data.length)
+
+        if ( response.data.data.length === 0 ) {
+          alert('not found')
+          return false;
+        } else {
+          callback({err:false});
+          return true
+        }
+        
+        
+        // this callback will be called asynchronously
+        // when the response is available
+      }, function errorCallback(response) {
+        callback({err:true});
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
+
+      
+      
+    }
 
     // Simple GET request:
     
@@ -223,11 +256,31 @@
           console.log($scope.findProp)
 
             if ( $("#propnumber").val().length === 10 ) {
-              console.log('yes');
-              $(".sw-btn-prev").removeClass("hide")
-              //return true;
-              $(".sw-btn-next").text("SEND CODE");
-              //$('#smartwizard').smartWizard("next");
+
+              return $http({
+                method: 'GET',
+                headers: {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json'},
+                url: 'http://web-v2dev-uk.rci.uk/rcidirect-services/rest/agreements?search_value='+$scope.findProp.propnumber
+              }).then(function successCallback(response) {
+                console.log(response.data.data.length)
+        
+                if ( response.data.data.length === 0 ) {
+                  alert('not found')
+                  return false;
+                } else {
+                  return true
+                }
+                
+                
+                // this callback will be called asynchronously
+                // when the response is available
+              }, function errorCallback(response) {
+                callback({err:true});
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+              });
+              
+              
             } else {
               console.log('no')
               return false
@@ -265,7 +318,7 @@
 
     vm.doPrevShift = function(){
       $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
-        //return confirm("Do you want to leave the step "+stepNumber+"?");
+        return confirm("Do you want to leave the step "+stepNumber+"?");
         console.log(stepNumber)
         
         switch (stepNumber) {
