@@ -33,6 +33,14 @@
     .module('eFleet')
     .config(config)
     .factory('testInterceptor', testInterceptor)
+    .factory('movieService', function($http) {
+      return {
+        getMovie: function(id) {
+           return $http.get('http://web-v2dev-uk.rci.uk/rcidirect-services/rest/agreements?search_value=2200692686' + id);
+        }
+      }
+    })
+    
 
   /** @ngInject */
   function config($logProvider, $httpProvider) {

@@ -8,7 +8,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, $location, $scope, $http, $window, $cookies) {
+  function MainController($timeout, webDevTec, $location, $scope, $http, $window, $cookies, movieService) {
     var vm = this;
     vm.startprocessstatus = false;
     vm.codeType = "";
@@ -16,7 +16,18 @@
 
     $scope.findProp = {};
     
-
+    $scope.getMovieListing = function(movie) {
+      var promise =
+          movieService.getMovie('avengers');
+      promise.then(
+         function(payload) {
+             $scope.listingData = payload.data;
+         },
+         function(errorPayload) {
+             $log.error('failure loading movie', errorPayload);
+         });
+    };
+    $scope.getMovieListing()
     //Brand diversion
     vm.service = {};
     vm.host = $location.host();
