@@ -68,7 +68,9 @@ body{
 form.form-eee{
   background: #eeeeee;
 }
-
+.navbar-header img{
+  height: 4vw;
+}
 $navbar-inverse-link-color: #5AADBB;
 .contract-part{
   background-color: #efefef;
@@ -829,7 +831,7 @@ input:checked + .slider:before {
   top: 50%;
   transform: translateY(-50%);
   p{
-    font-size: 4rem;
+    font-size: 2rem;
     font-weight: bold;
   }
 }
