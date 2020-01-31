@@ -22,15 +22,19 @@
     vm.service = {};
     vm.host = $location.host();
 
-    if (vm.host.indexOf('.') >= 0) {
-      vm.service.company = vm.host.split('.')[0];
-    }
+    // if (vm.host.indexOf('.') >= 0) {
+    //   vm.service.company = vm.host.split('.')[0];
+    // } else {
+      
+    // }
+    vm.service.company = 'nissan';
+
 
     $scope.doApiLogin = function() {
       sessionStorage.removeItem("auth");
       $http({
         method: 'GET',
-        headers:  { 'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json' },
+        headers:  { 'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*', 'tango':'*' },
         // url: 'https://v2vds.rcidirect.co.uk/rcidirect-services/rest/users/login'
         url: 'http://web-v2dev-uk.rci.uk/rcidirect-services/rest/users/login'
       }).then(function successCallback(response) {
@@ -52,7 +56,7 @@
     $scope.doGetDealership = function(){
       $http({
         method: 'PUT',
-        headers: {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json'},
+        headers: {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*' },
         data: {"selected_dealership_actor_code": "010000014965","selected_sales_executive_actor_code":"010001460890","stage":"LOGIN"},
         url: 'http://web-v2dev-uk.rci.uk/rcidirect-services/rest/users/dealer_selection'
       }).then(function successCallback(response) {
@@ -72,7 +76,7 @@
       //2200692686
       $http({
         method: 'GET',
-        headers: {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json'},
+        headers: {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json' },
         url: 'http://web-v2dev-uk.rci.uk/rcidirect-services/rest/agreements?search_value=' + propnumber
       }).then(function successCallback(response) {
         console.log(response)
@@ -89,7 +93,7 @@
       //2200692686
       $http({
         method: 'GET',
-        headers: {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json'},
+        headers: {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*' },
         url: 'http://web-v2dev-uk.rci.uk/rcidirect-services/rest/actors/individual/010001368468'
       }).then(function successCallback(response) {
         console.log(response)
