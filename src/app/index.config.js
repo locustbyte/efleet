@@ -33,10 +33,45 @@
     .module('eFleet')
     .config(config)
     .factory('testInterceptor', testInterceptor)
-    .factory('movieService', function($http) {
+    .factory('apiService', function($http) {
       return {
-        getMovie: function(id) {
-           return $http.get('http://web-v2dev-uk.rci.uk/rcidirect-services/rest/agreements?search_value=2200692686' + id);
+        getAgreementByID: function(id) {
+           //return $http.get('http://web-v2dev-uk.rci.uk/rcidirect-services/rest/agreements?search_value=' + id);
+           return $http({
+            method: 'GET',
+            headers: {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json'},
+            url: 'http://web-v2dev-uk.rci.uk/rcidirect-services/rest/agreements?search_value='+id
+          })
+        },
+        getCustomerByCustomerCode: function(custCode) {
+          return $http({
+            method: 'GET',
+            headers: {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json'},
+            url: 'http://web-v2dev-uk.rci.uk/rcidirect-services/rest/agreements?search_value='+id
+          }).then(function successCallback(response) {
+            console.log(response)
+            
+            // this callback will be called asynchronously
+            // when the response is available
+          }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+          });
+        },
+        sendCustomerSecurityCode: function(method) {
+          return $http({
+            method: 'POST',
+            headers: {'Authorization': 'Basic b25saW5lc2FsZTpvbmxpbmVzYWxl', 'Content-Type': 'application/json'},
+            url: 'http://web-v2dev-uk.rci.uk/rcidirect-services/rest/agreements/16803487/authorisation/AUTOPAYOUT?contact_method=EMAIL'+id
+          }).then(function successCallback(response) {
+            console.log(response)
+            
+            // this callback will be called asynchronously
+            // when the response is available
+          }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+          });
         }
       }
     })
